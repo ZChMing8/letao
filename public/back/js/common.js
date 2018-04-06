@@ -29,13 +29,29 @@ $(function () {
   
   //点击icon_menu 让侧边栏慢慢显示与隐藏
   $(".icon_menu").on("click",function () {
-      
-  })
+      $(".lt_aside").toggleClass("aside-menu");
+      $(".lt_topbar").toggleClass("topbar-menu");
+      $(".lt_main").toggleClass("main-menu");
+})
   
   //模态框，点击使其显示
   $(".icon_logout").on("click",function () {
-    console.log(1);
+    //console.log(1);
     $('#myModal').modal("show");
+  })
+
+  //点击btn-out 进行ajax请求，让网页退出到登录页
+  $("#btn-out").on("click",function () {
+    $.ajax({
+      url:"/employee/employeeLogout",
+      dataType:"json",
+      success:function ( info ) {
+        //console.log(info);
+        if (info.success) {
+          location.href = "login.html";
+        }
+      }
+    })
   })
 })
 
