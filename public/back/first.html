@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>乐淘电商</title>
+  <title>一级分类</title>
   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="lib/bootstrap-validator/css/bootstrapValidator.min.css">
   <link rel="stylesheet" href="lib/nprogress/nprogress.css">
@@ -46,12 +46,61 @@
     <!--路径导航-->
     <ol class="breadcrumb">
       <li><a href="index.html">管理系统</a></li>
+      <li class="active">分类管理</li>
       <li class="active">一级分类</li>
     </ol>
+
+    <!--添加分类-->
+    <button class="btn btn-default btn-add">添加分类</button>
+
+    <div class="lt_content mt_20">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th width="30%">序号</th>
+          <th width="70%">一级分类</th>
+        </tr>
+        </thead>
+        <tbody>
+          <!--<tr>-->
+            <!--<td>1</td>-->
+            <!--<td>户外馆</td>-->
+          <!--</tr>-->
+        </tbody>
+      </table>
+
+      <div class="text-right">
+        <ul id="paginator"></ul>
+      </div>
+    </div>
   </div>
 </div>
 
-<!--模态框-->
+
+<!--添加分类模态框-->
+<div class="modal fade" id="addModal">
+  <div class="modal-dialog  modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">添加分类</h4>
+      </div>
+      <div class="modal-body">
+      <form id="form">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="请输入一级分类" name="categoryName">
+        </div>
+      </form>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="submit" class="btn btn-primary" form="form" id="btn-add">添加</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--退出登录模态框-->
 <div class="modal fade" id="myModal">
   <div class="modal-dialog  modal-sm">
     <div class="modal-content">
@@ -72,8 +121,20 @@
 
 <script src="lib/jquery/jquery.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
 <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
 <script src="lib/nprogress/nprogress.js"></script>
 <script src="js/common.js"></script>
+<script src="js/first.js"></script>
+
+<script type="text/html" id="tmp-first">
+{{ each rows v i }}
+  <tr>
+    <td>{{ (page - 1) * size + (i + 1) }}</td>
+    <td>{{ v.categoryName }}</td>
+  </tr>
+{{ /each }}
+</script>
 </body>
 </html>

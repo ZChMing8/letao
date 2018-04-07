@@ -54,7 +54,6 @@ if ( location.href.indexOf("login.html") === -1 ) {
 
 
 
-
 $(function() {
   // 1. 二级分类切换功能
   $('.category').click(function() {

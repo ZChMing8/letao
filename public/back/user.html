@@ -53,11 +53,11 @@
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
-            <th>序号</th>
-            <th>用户名</th>
-            <th>手机号</th>
-            <th>状态</th>
-            <th>操作</th>
+            <th width="15%">序号</th>
+            <th width="20%">用户名</th>
+            <th width="25%">手机号</th>
+            <th width="15%">状态</th>
+            <th width="25%">操作</th>
           </tr>
         </thead>
         <tbody>
@@ -81,13 +81,13 @@
   </div>
 </div>
 
-<!--模态框-->
+<!--启用禁用模态框-->
 <div class="modal fade" id="userModal">
   <div class="modal-dialog  modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+        <h4 class="modal-title">温馨提示</h4>
       </div>
       <div class="modal-body">
         <p class="color-red"><i class="glyphicon glyphicon-info-sign"></i>您确定要执行此操作吗？</p>
@@ -95,6 +95,25 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
         <button type="button" class="btn btn-primary" id="btn-confirm">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--退出登录模态框模态框-->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog  modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">温馨提示</h4>
+      </div>
+      <div class="modal-body">
+        <p class="color-red"><i class="glyphicon glyphicon-info-sign"></i>您确定要退出后台管理系统吗？</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="btn-out">退出</button>
       </div>
     </div>
   </div>
