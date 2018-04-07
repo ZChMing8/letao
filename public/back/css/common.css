@@ -95,7 +95,7 @@ html, body {
 .lt_main {
   width: 100%;
   height: 1000px;
-  background-color: pink;
+  /*background-color: pink;*/
   padding-left: 180px;
   padding-top: 50px;
   transition: all 1s;
@@ -126,4 +126,11 @@ html, body {
 }
 .container-fluid {
   padding-top: 20px;
+}
+
+.echarts1,
+.echarts2 {
+  width: 48%;
+  height: 400px;
+  /*background-color: blue;*/
 }
