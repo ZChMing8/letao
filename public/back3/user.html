@@ -131,15 +131,15 @@
 <script type="text/template" id="tmp-user">
 {{ each rows v i }}
   <tr>
-    <td>{{ (page - 1) * size + (i + 1) }}</td>
+    <td>{{ (page-1)*size + (i+1) }}</td>
     <td>{{ v.username }}</td>
     <td>{{ v.mobile }}</td>
     <td>{{ v.isDelete === 1 ? "正常" : "禁用" }}</td>
     <td data-id="{{ v.id }}">
       {{ if v.isDelete === 1 }}
-        <button class="btn btn-danger">禁用</button>
+      <button class="btn btn-danger">禁用</button>
       {{ else }}
-        <button class="btn btn-success">启用</button>
+      <button class="btn btn-success">启用</button>
       {{ /if }}
     </td>
   </tr>

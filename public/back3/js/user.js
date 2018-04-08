@@ -2,30 +2,27 @@
  * Created by 赵春明 on 2018/4/7.
  */
 $(function () {
-
   var currentPage = 1;
   var pageSize = 5;
-  //渲染数据
-    render();
+  render();
   function render() {
     $.ajax({
+      url: "/user/queryUser",
       type:"get",
-      url:"/user/queryUser",
-      data:{
+      data: {
         page:currentPage,
         pageSize:pageSize
       },
-      success:function ( info ) {
+      success: function ( info ) {
         console.log(info);
         $(".table tbody").html(template("tmp-user",info));
-
-        //设置分页
+        //渲染分页
         $("#paginator").bootstrapPaginator({
-          bootstrapMajorVersion:3,
+          //版本
+          bootstrapMajorVersion: 3,
           currentPage: info.page,
-          totalPages: Math.ceil( info.total / info.size ),
-          numberOfPages: 4,
-          onPageClicked:function (event,originalEvent, type,page) {
+          totalPages: Math.ceil(info.total / info.size),
+          onPageClicked:function (a,b,c,page) {
             currentPage = page;
             render();
           }
@@ -34,36 +31,24 @@ $(function () {
     })
   }
 
-  //点击禁用启用按钮，让模态框显示，然后进行操作
+  //注册事件委托，点击操作按钮，进行切换
   $(".table tbody").on("click",".btn",function () {
-    //让模态框显示
-    $("#userModal").modal("show");
-
-    //获取id值和isDelete值
     var id = $(this).parent().data("id");
-    //console.log(id);
-    var isDelete = $(this).hasClass("btn-danger") ? 0 : 1;
+    var isDelete = $(this).text() === "启用" ? 1 : 0;
     //console.log(isDelete);
-
-    $("#btn-confirm").off("click").on("click",function () {
-      $.ajax({
-        type: "post",
-        url: "/user/updateUser",
-        data:{
-          id:id,
-          isDelete:isDelete
-        },
-        success:function ( info ) {
-          //console.log(info);
-          if ( info.success ) {
-            //让模态框隐藏
-            $("#userModal").modal("hide");
-            //重新渲染页面
-            render();
-          }
+    $.ajax({
+      url:"/user/updateUser",
+      type:"post",
+      data:{
+        id:id,
+        isDelete:isDelete
+      },
+      success:function ( info ) {
+        console.log(info);
+        if(info.success) {
+          render();
         }
-      })
+      }
     })
   })
-
 })
