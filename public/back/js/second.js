@@ -113,8 +113,8 @@ $(function () {
 
   })
 
-  //点击添加，获取表单的值，进行ajax请求，完成页面渲染
-  $("#btn-add").on("click",function () {
+  //注册校验成功事件， 获取表单的值，进行ajax请求，完成页面渲染
+  $("#form").on("success.form.bv",function () {
     $.ajax({
       type: "post",
       url: "/category/addSecondCategory",
@@ -132,5 +132,4 @@ $(function () {
       }
     })
   })
-
 })
