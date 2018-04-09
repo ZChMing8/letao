@@ -138,6 +138,7 @@ a:active {
   right: 0;
   padding-left: 180px;
   transition: all 1s;
+  z-index: 666;
 }
 .lt_topbar.hidemenu {
   padding-left: 0px;

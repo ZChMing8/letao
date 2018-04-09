@@ -109,19 +109,40 @@
                 <!--坑-->
               </ul>
             </div>
-            <input type="hidden" name="categoryId">
-            <input type="hidden" name="hot" value="1">
+            <input type="hidden" name="brandId">
+            <input type="hidden" name="statu" value="1">
           </div>
+          <!--请输入商品名称-->
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="请输入二级分类" name="brandName">
+            <input type="text" class="form-control" placeholder="请输入商品名称" name="proName">
+          </div>
+          <!--商品描述-->
+          <div class="form-group">
+            <textarea class="form-control" rows="3" placeholder="请输入商品描述" name="proDesc"></textarea>
+          </div>
+          <!--商品库存-->
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入商品库存" name="num">
+          </div>
+          <!--商品尺寸-->
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入商品尺寸(32-46)" name="size">
+          </div>
+          <!--商品原价-->
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入商品原价" name="oldPrice">
+          </div>
+          <!--商品现价-->
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入商品现价" name="price">
           </div>
           <div class="form-group">
             <label for="fileupload" class="btn btn-default">上传图片</label>
-            <input id="fileupload" type="file" name="pic1" data-url="/category/addSecondCategoryPic" style="display: none;">
+            <input id="fileupload" multiple type="file" name="pic1" data-url="/product/addProductPic" style="display: none;">
           </div>
           <div class="form-group" id="imgBox">
-            <img src="images/none.png" width="100">
-            <input type="hidden" name="brandLogo">
+            <!--<img src="images/none.png" width="100">-->
+            <input type="hidden" name="picStatus">
           </div>
         </form>
       </div>
@@ -173,10 +194,20 @@
     <td>{{ v.size }}</td>
     <td>{{ v.statu === 1 ? "已上架" : "已下架" }}</td>
     <td>
-      <button class="btn btn-danger">下架</button>
+      {{ if v.statu === 1 }}
+        <button class="btn btn-danger">下架</button>
+      {{ else }}
+        <button class="btn btn-success">上架</button>
+      {{ /if }}
     </td>
   </tr>
 {{ /each }}
+</script>
+
+<script type="text/html" id="tmp-dropdown">
+  {{ each rows v }}
+  <li><a tabindex="-1" href="javascript:;" data-id="{{ v.id }}">{{ v.brandName }}</a></li>
+  {{ /each }}
 </script>
 
 </body>
