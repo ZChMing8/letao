@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>乐淘电商</title>
+  <title>二级分类</title>
   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="lib/bootstrap-validator/css/bootstrapValidator.min.css">
   <link rel="stylesheet" href="lib/nprogress/nprogress.css">
@@ -25,12 +25,12 @@
       <li><a href="user.html"><i class="glyphicon glyphicon-user"></i><span>用户管理</span></a></li>
       <li>
         <a href="javascript:;" class="category"><i class="glyphicon glyphicon-list"></i><span>分类管理</span></a>
-        <div class="child" style="display: none">
+        <div class="child">
           <a href="first.html">一级分类</a>
-          <a href="second.html">二级分类</a>
+          <a href="second.html" class="current">二级分类</a>
         </div>
       </li>
-      <li><a href="product.html" class="current"><i class="glyphicon glyphicon-tags"></i><span>商品管理</span></a></li>
+      <li><a href="product.html"><i class="glyphicon glyphicon-tags"></i><span>商品管理</span></a></li>
     </ul>
   </div>
 </div>
@@ -48,10 +48,95 @@
       <li><a href="index.html">管理系统</a></li>
       <li class="active">商品管理</li>
     </ol>
+
+    <!--添加分类-->
+    <button class="btn btn-default btn-add">添加分类</button>
+
+    <div class="lt_content mt_20">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th width="10%">序号</th>
+          <th width="25%">商品名称</th>
+          <th width="25%">商品描述</th>
+          <th width="10%">商品库存</th>
+          <th width="10%">商品尺寸</th>
+          <th width="10%">商品状态</th>
+          <th width="10%">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+          <!--<tr>-->
+            <!--<td>1</td>-->
+            <!--<td>李宁闪击篮球鞋驭帅10镭射队尚4男韦德之道空袭中高帮队尚3.5球鞋</td>-->
+            <!--<td>描述</td>-->
+            <!--<td>20</td>-->
+            <!--<td>35-45</td>-->
+            <!--<td>已下架</td>-->
+            <!--<td>-->
+              <!--<button class="btn btn-success">上架</button>-->
+              <!--&lt;!&ndash;<button class="btn btn-danger">下架</button>&ndash;&gt;-->
+            <!--</td>-->
+          <!--</tr>-->
+        </tbody>
+      </table>
+
+      <div class="text-right">
+        <ul id="paginator"></ul>
+      </div>
+    </div>
   </div>
 </div>
 
-<!--模态框-->
+
+<!--添加分类模态框-->
+<div class="modal fade" id="addModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">添加分类</h4>
+      </div>
+      <div class="modal-body">
+        <form id="form">
+          <div class="form-group">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <span id="dropdownText">请选择二级分类</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <!--<li><a tabindex="-1" href="#">Action</a></li>-->
+              </ul>
+            </div>
+            <!--所属分类id-->
+            <input type="hidden" name="categoryId">
+            <!--火热的品牌-->
+            <input type="hidden" name="hot" value="1">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入二级分类" name="brandName">
+          </div>
+          <div class="form-group">
+            <label for="fileupload" class="btn btn-default">上传图片</label>
+            <input id="fileupload" type="file" name="pic1" data-url="/category/addSecondCategoryPic" style="display: none;">
+          </div>
+          <div class="form-group" id="imgBox">
+            <img src="images/none.png" width="100">
+            <!--图片地址-->
+            <input type="hidden" name="brandLogo">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="submit" class="btn btn-primary" form="form" id="btn-add">添加</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--退出登录模态框-->
 <div class="modal fade" id="myModal">
   <div class="modal-dialog  modal-sm">
     <div class="modal-content">
@@ -72,8 +157,39 @@
 
 <script src="lib/jquery/jquery.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
 <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
 <script src="lib/nprogress/nprogress.js"></script>
 <script src="js/common.js"></script>
+<script src="js/product.js"></script>
+
+<script type="text/html" id="tmp-product">
+  {{ each rows v i }}
+    <tr>
+      <td>{{ (page-1)*size+(i+1) }}</td>
+      <td>{{ v.proName }}</td>
+      <td>{{ v.proDesc }}</td>
+      <td>{{ v.num }}</td>
+      <td>{{ v.size }}</td>
+      <td>{{ v.statu === 1 ? "已上架" : "已下架" }}</td>
+      <td>
+        {{ if v.statu === 1 }}
+        <button class="btn btn-danger">下架</button>
+        {{ else }}
+        <button class="btn btn-success">上架</button>
+        {{ /if }}
+      </td>
+    </tr>
+  {{ /each }}
+</script>
+
+<script type="text/html" id="tmp-dropdown">
+  {{ each rows v i }}
+  <li><a tabindex="-1" href="javascript:;" data-id="{{ v.id }}">{{ v.brandName }}</a></li>
+  {{ /each }}
+</script>
 </body>
 </html>
