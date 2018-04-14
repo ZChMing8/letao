@@ -1,12 +1,14 @@
 /**
  * Created by 赵春明 on 2018/4/7.
  */
-$(function () {
+//  <script src="lib/artTemplate/template-web.js"></script>
+//  <script src="js/user.js"></script>
 
+require(['jquery','template','bootstrap','bootstrapValidator','bootstrapPaginator','common'],function ($,template) {
   var currentPage = 1;
   var pageSize = 5;
   //渲染数据
-    render();
+  render();
   function render() {
     $.ajax({
       type:"get",
@@ -65,5 +67,6 @@ $(function () {
       })
     })
   })
-
 })
+
+

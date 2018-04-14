@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!--<script src="require.js" data-main="./modules/main.js"></script>-->
+
+
+<script src="require.js"></script>
+<script>
+  /*
+  * requirejs 中的路径问题, 分三种情况
+  * 1. 直接相对路径访问, 最简单的
+  * 2. 配置 data-main, 模块的加载, 会以配置的 data-main的目录为基准
+  *    会以异步的方式, 执行 main.js 里面的代码   (用的非常少)
+  *
+  * 3. 配置 config 基础路径, 一般配置成网站的绝对路径
+  *    配置完基础路径之后, 模块的查找, 模块的真实路径 = baseUrl + 配置的路径
+  * */
+
+//  require(['./modules/a'], function() {
+//    console.log("直接以相对路径的方式进行加载模块");
+//  })
+
+  // 配置了data-main后, 模块的加载, 会以 data-main 配置的文件路径为基准
+  // require(['./a'])
+
+  require.config({
+    // 配置网站基础路径
+    baseUrl: "/letao/public",
+    // 通过 paths 可以配置路径别名, 因为每次要输入 ./demo/modules/a 很麻烦
+    paths: {
+      a: './demo/modules/a'
+    }
+  });
+
+  // 加载 a 模块
+  // baseUrl + 配置的路径 = 真实的路径
+  // 真实的路径 = /letao/public/demo/modules/a
+//  require(['a']);
+
+
+  // 配置了 config 以后的特殊情况
+  // 1. 加上了 .js 后置后, 会无视 config 中的配置, 以相对路径的方式进行查找模块
+  // require(['./demo/modules/a.js'])
+
+  // 2. 如果配置的是绝对路径, 也会无视 config 中的配置, 直接以 绝对路径的方式加载
+  // require(['/a.js'])
+
+  // 3. 文件路径 以 http:// 或者 https:// 开头的, 直接以网络地址进行加载
+
+
+  // 总结:
+  // 一定会配置 config
+  // 如果想要使用 config 中的 baseUrl, 就不要加 .js 后缀
+  // 如果加了.js后缀, 就会以相对路径或者绝对路径的方式加载, 会无视 config 中的配置
+
+</script>
+
+</body>
+</html>

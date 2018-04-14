@@ -1,10 +1,7 @@
 /**
  * Created by Jepson on 2018/4/6.
  */
-
-// 防止全局变量污染, 等待dom渲染再执行
-$(function() {
-
+require(['jquery', 'bootstrap', 'bootstrapValidator', 'common'], function() {
   // 1. 进行表单校验
   //    校验要求: (1) 用户名不能为空
   //             (2) 密码不能为空, 且必须是 6-12 位
@@ -111,5 +108,5 @@ $(function() {
     // 除了重置文本, 还要重置校验状态
     $('#form').data("bootstrapValidator").resetForm();
   });
+})
 
-});

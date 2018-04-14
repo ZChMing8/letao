@@ -1,8 +1,7 @@
 /**
  * Created by Jepson on 2018/4/7.
  */
-
-$(function() {
+require( ['jquery', 'template', 'bootstrap', 'bootstrapValidator', 'bootstrapPaginator', 'common'], function($, template) {
 
   // 当前页
   var currentPage = 1;

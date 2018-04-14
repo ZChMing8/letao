@@ -12,26 +12,4 @@
 }
 
 
-.lt_product {
-  padding: 10px;
-}
-.lt_product_item {
-  float: left;
-  width: 48%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.lt_product_item:nth-child(2n+1) {
-  margin-right: 4%;
-}
 
-
-.lt_product_item .price {
-  color: #FF3636;
-}
-.lt_product_item .old {
-  /* 删除线 */
-  text-decoration: line-through;
-}

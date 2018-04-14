@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script src="require.js"></script>
+
+<script>
+
+  // 配置 config
+
+  require.config({
+    // 基础路径
+    baseUrl: '/letao/public/demo/',
+    // 配置别名
+    paths: {
+      jquery: './lib/jquery/jquery',
+      bootstrap: './lib/bootstrap/js/bootstrap',
+      animate: './modules/animate'
+    },
+    shim: {
+      // 配置 bootstrap 的依赖项
+      bootstrap: {
+        deps: ['jquery']
+      },
+      // animate 不支持模块化, 但是有 animate 方法想要导出
+      animate: {
+        exports: 'animate'
+      }
+    }
+  });
+
+  // 加载 jquery
+  // 注意: 由于 jquery 源码中已经, 定义模块名为 jquery
+  // 不是匿名模块, 就不能随便引入, 必须以定义的模块名进行引入
+
+//  require(['jquery'], function( $ ) {
+//
+//    console.log( $ );
+//
+//    $('body').css("backgroundColor", "pink");
+//
+//    console.log( "加载了jquery" );
+//  })
+
+//    require(['bootstrap'], function() {
+//      console.log( "加载了 bootstrap" );
+//    })
+
+  require(['animate'], function( animate ) {
+    console.log(animate);
+  })
+
+</script>
+
+</body>
+</html>

@@ -1,8 +1,12 @@
 /**
  * Created by Jepson on 2018/4/7.
  */
+//  <!-- 引入 jquery-fileupload 包 -->
+//<script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+//  <script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
 
-$(function() {
+
+require( ['jquery', 'template', 'bootstrap', 'bootstrapValidator', 'bootstrapPaginator', 'common', 'jqueryFileupload'], function($, template) {
 
   // 当前页
   var currentPage = 1;

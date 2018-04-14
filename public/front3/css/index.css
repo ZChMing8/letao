@@ -11,23 +11,3 @@
   width: 100%;
   height: 100%;
 }
-.lt_product {
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  overflow: hidden;
-}
-.lt_product a {
-  float: left;
-  display: block;
-  width: 48%;
-  padding:10px;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-}
-.lt_product a:nth-child(odd) {
-  margin-right: 4%;
-}
-.lt_product span {
-  color: #ff3636;
-}

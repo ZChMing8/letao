@@ -2,77 +2,97 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+  <title>乐淘商城</title>
+  <link rel="icon" href="favicon.ico">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>乐淘商城</title>
   <link rel="stylesheet" href="lib/fa/css/font-awesome.min.css">
   <link rel="stylesheet" href="lib/mui/css/mui.css">
-  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/user.css">
+  <style>
+    .btn_wrap {
+      padding: 10px;
+    }
+    .btn_wrap button {
+      padding: 5px 0;
+      margin: 0;
+      line-height: 30px;
+    }
+  </style>
 </head>
 <body>
 
+
+<!-- 容器 -->
 <div class="lt_contanier">
+  <!-- 头部 -->
   <div class="lt_header">
     <a class="icon_left" href="javascript:history.go(-1);"><i class="mui-icon mui-icon-back"></i></a>
-    <h3>登录</h3>
+    <h3>会员中心</h3>
   </div>
+  <!-- 主体 -->
   <div class="lt_main">
+    <!-- 添加区域滚动的容器 -->
     <div class="mui-scroll-wrapper">
       <div class="mui-scroll">
+        <!--这里放置真实显示的DOM内容-->
 
-        <form class="mui-input-group">
-          <div class="mui-input-row">
-            <label>用户名</label>
-            <input type="text" class="mui-input-clear" placeholder="请输入用户名">
-          </div>
-          <div class="mui-input-row">
-            <label>密码</label>
-            <input type="password" class="mui-input-password" placeholder="请输入密码">
-          </div>
-          <div class="mui-button-row">
-            <button type="submit" class="mui-btn mui-btn-primary" >登录</button>
-            <button type="reset" class="mui-btn mui-btn-danger" >重置</button>
-          </div>
-        </form>
+        <ul class="mui-table-view">
+          <li class="mui-table-view-cell mui-media" id="userInfo">
+            <!--坑-->
+          </li>
+
+          <li class="mui-table-view-cell">
+            <a class="mui-navigate-right">账号与安全</a>
+          </li>
+          <li class="mui-table-view-cell">
+            <a href="cart.html" class="mui-navigate-right">我的购物车</a>
+          </li>
+          <li class="mui-table-view-cell">
+            <a class="mui-navigate-right">收货地址管理</a>
+          </li>
+        </ul>
+
+        <div class="btn_wrap">
+          <button class="mui-btn mui-btn-block" id="logoutBtn">退出</button>
+        </div>
+
 
       </div>
     </div>
+
   </div>
+  <!-- 底部 -->
   <div class="lt_footer">
     <ul>
-      <li>
-        <a href="index.html">
-          <i class="fa fa-home"></i>
-          <p>首页</p>
-        </a>
-      </li>
-      <li>
-        <a href="category.html">
-          <i class="fa fa-bars"></i>
-          <p>分类页</p>
-        </a>
-      </li>
-      <li>
-        <a href="cart.html">
-          <i class="fa fa-shopping-cart"></i>
-          <p>购物车</p>
-        </a>
-      </li>
-      <li>
-        <a class="current" class="user.html">
-          <i class="fa fa-user"></i>
-          <p>会员中心</p>
-        </a>
-      </li>
+      <li><a href="index.html"><i class="fa fa-home"></i><p>首页</p></a></li>
+      <li><a href="category.html"><i class="fa fa-bars"></i><p>分类页</p></a></li>
+      <li><a href="cart.html"><i class="fa fa-shopping-cart"></i><p>购物车</p></a></li>
+      <li><a class="current" href="user.html"><i class="fa fa-user"></i><p>会员中心</p></a></li>
     </ul>
   </div>
 </div>
 
+
+
+
 <script src="lib/mui/js/mui.min.js"></script>
 <script src="lib/zepto/zepto.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
 <script src="js/common.js"></script>
 <script src="js/user.js"></script>
+
+<script type="text/html" id="tmp-user">
+
+  <a href="javascript:;" class="mui-navigate-right">
+    <img class="mui-media-object mui-pull-left" src="images/user.jpg">
+    <div class="mui-media-body">
+      {{ username }}
+      <p class='mui-ellipsis'>绑定手机: {{ mobile }}</p>
+    </div>
+  </a>
+
+</script>
+
 </body>
 </html>

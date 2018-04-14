@@ -1,7 +1,12 @@
 /**
  * Created by 赵春明 on 2018/4/7.
  */
-$(function () {
+
+
+
+
+
+require(['jquery','template','bootstrap','bootstrapValidator','bootstrapPaginator','common'],function ($,template) {
   var currentPage = 1;
   var pageSize = 5;
   render();
@@ -22,8 +27,8 @@ $(function () {
           currentPage: info.page,
           totalPages: Math.ceil( info.total / info.size ),
           onPageClicked: function (a,b,c,page) {
-              currentPage = page;
-              render();
+            currentPage = page;
+            render();
           }
         })
       }
@@ -32,7 +37,7 @@ $(function () {
 
   //添加分类功能
   $(".btn-add").on("click",function () {
-      //让模态框显示
+    //让模态框显示
     $("#addModal").modal("show");
   })
 
@@ -58,7 +63,7 @@ $(function () {
   })
 
   //点击确定按钮，进行表单提交，然后进行ajax请求，并渲染页面
-  $("#btn-add").on("click",function () {
+  $("#form").on("success.form.bv",function () {
     $.ajax({
       type: "post",
       url: "/category/addTopCategory",

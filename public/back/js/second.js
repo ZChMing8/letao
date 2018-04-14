@@ -1,7 +1,12 @@
 /**
  * Created by 赵春明 on 2018/4/7.
  */
-$(function () {
+
+//  <script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+//  <script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
+
+
+require(['jquery','template','bootstrap','bootstrapValidator','bootstrapPaginator','common','jqueryFileupload'],function ($,template) {
   var currentPage = 1;
   var pageSize = 5;
   render();

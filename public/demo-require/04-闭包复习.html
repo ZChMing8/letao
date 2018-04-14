@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<p>呵呵</p>
+
+<script>
+
+  // 闭包的概念: 定义在函数内的函数
+  // (1) 封闭的包裹 (就是一个函数)
+  // (2) 他可以访问到外部函数的变量
+  // 闭包的应用: 计数器, 实现数据缓存, 变量私有化
+
+//  function fn() {
+//
+//    var num = 123;
+//
+//    function f1() {
+//      console.log( num );
+//    }
+//
+//    return f1;
+//
+//  }
+//  var temp = fn();
+//  temp();
+
+
+//  var fn = (function() {
+//    var num = 123;
+//    return function() {
+//      console.log( num );
+//    }
+//  })();
+//  fn();
+
+
+//  闭包实现计数器
+//  function fn() {
+//    var count = 0;
+//
+//    function f1() {
+//      count++;
+//      console.log( count )
+//    }
+//
+//    return f1;
+//  }
+//  var temp = fn(); // 第一个计数器 0
+//  temp(); // 第一个计数器 0 -> 1
+//  temp(); // 第一个计数器 1 -> 2
+//
+//  var temp2 = fn(); // 第二个计数器 0
+//  temp2(); // 第二个计数器 0 -> 1
+//
+//  console.log(temp === temp2);  // false
+//  temp(); // 第一个计数器 2 -> 3
+//  temp(); // 第一个计数器 3 -> 4
+//
+//  temp2(); // 第二个计数器 1 -> 2
+
+
+
+  // setTimeout 打印数字,
+  // 1 秒 打印 1,
+  // 2 秒 打印 2
+  // ..
+  // js 是单线程, 遇到异步的函数, 会扔到 eventloop 事件循环队列中
+
+//  for( var i = 1; i < 10; i++ ) {
+//    setTimeout(function() {
+//      console.log( i );
+//    }, 1000 * i);
+//  }
+  // i 10 主线程执行完成之后, 才会去轮巡事件循环队列, 看有没有满足条件的函数, 如果有, 拿过来执行
+
+
+// 法 1
+//  for( let i = 1; i < 10; i++ ) {
+//    setTimeout(function() {
+//      console.log( i );
+//    }, 1000 * i);
+//  }
+
+
+  // 闭包 1
+//    for( var i = 1; i < 10; i++ ) {
+//
+//      (function( i ) {
+//
+//        setTimeout(function() {
+//          console.log( i );
+//        }, 1000 * i);
+//
+//      })( i )
+//
+//    }
+
+
+  // 闭包 2
+//    for( var i = 1; i < 10; i++ ) {
+//
+//      var fn = (function( num ) {
+//        return function() {
+//          console.log( num );
+//        }
+//      })( i );
+//
+//      setTimeout( fn , 1000 * i);
+//
+//    }
+
+
+//    function fn( num ) {
+//      return function() {
+//        console.log( num );
+//      }
+//    }
+//    var temp = fn( 1 );
+//    temp(); // 1
+//
+//    var temp2 = fn( 2 )
+//    temp2(); // 2
+
+
+  // setTimeout( fn, 毫秒数, 需要传递给fn的参数 )
+  for(var i = 1;i <10; i++){
+    setTimeout( function( i ){
+      console.log(i);
+    }, 1000, i );
+  }
+
+//  alert("呵呵");
+
+</script>
+
+</body>
+</html>

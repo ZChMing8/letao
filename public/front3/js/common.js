@@ -14,3 +14,38 @@ $(function () {
     interval:1000//自动轮播周期，若为0则不自动播放，默认为0；
   });
 })
+
+//获取地址后面拼接的数据
+function getSearch(key) {
+  var search = location.search;
+  search = decodeURI(search);
+  search = search.substr(1);
+//    console.log(search);
+  var arr = search.split("&");
+//    console.log(arr);
+  var obj = {};
+  arr.forEach(function (value,index) {
+    var k = value.split("=")[0];
+    var v = value.split("=")[1];
+    obj[ k ] = v;
+  })
+  return obj[ key ];
+}
+
+//1获取本地存储方法
+function getHistory() {
+  var history = localStorage.getItem("search_list") || '[]';
+  var arr = JSON.parse( history );
+  return arr;
+}
+
+//2.修改或设置本地存储方法
+function setHistory( arr ) {
+  localStorage.setItem("search_list",JSON.stringify( arr ));
+}
+
+//3.动态渲染
+function render() {
+  var arr = getHistory();
+  $(".lt_history").html(template("tmp-search",{ list:arr }));
+}

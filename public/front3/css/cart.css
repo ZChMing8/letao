@@ -1,0 +1,79 @@
+.mui-table-view li {
+  padding: 10px;
+}
+.mui-table-cell {
+  width: 100%;
+}
+.imgbox {
+  float: left;
+  width: 60px;
+  height: 90px;
+  margin-right: 10px;
+}
+.pro-info {
+  overflow: hidden;
+}
+.pro-info .mui-ellipsis-2 {
+  color: #000;
+}
+.pro-info .pro-price {
+  font-size: 16px;
+  padding: 5px 0;
+}
+.pro-info .pro-price span:first-of-type {
+  color: red;
+  margin-right: 5px;
+}
+.pro-info .pro-price s {
+  font-size: 14px;
+  color: #666;
+}
+.lt_size {
+  text-align: left;
+}
+
+.lt_size span {
+  display: inline-block;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  text-align: center;
+  padding: 1px 2px;
+  background-color: #F5F5F5;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+.lt_size span.current {
+  background-color: #069;
+  color: #fff;
+}
+.lt_num {
+  text-align: left;
+}
+
+.lt_contanier {
+  padding-bottom: 85px;
+}
+
+.addPrice {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  background-color: #eee;
+  position: absolute;
+  bottom: 55px;
+  left: 0;
+  padding-left:10px;
+}
+.addPrice span {
+  font-size: 12px;
+  color: red;
+}
+.addPrice a {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 12px;
+  background-color: red;
+  color: #fff;
+  padding: 0 8px;
+}

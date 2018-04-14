@@ -2,8 +2,7 @@
  * Created by Jepson on 2018/4/7.
  */
 
-
-$(function() {
+require(['jquery', 'echarts', 'common'], function( $, echarts ) {
   // 基于准备好的dom，初始化echarts实例
   // 柱状图
   var echars1 = echarts.init(document.querySelector(".echarts_1"));

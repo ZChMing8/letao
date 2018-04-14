@@ -1,0 +1,23 @@
+
+
+.lt_history {
+  padding: 10px;
+  font-size: 12px;
+  color: #666;
+}
+
+.content ul {
+  border: 1px dashed red;
+  border-bottom: none;
+}
+.content li {
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px dashed red;
+}
+.content li a {
+  padding: 0 10px;
+}
+.content li i {
+  line-height: 30px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  // arr.push 在最后添加   返回数组的长度
+  // arr.pop  删除最后一项  返回删掉的项
+  // arr.unshift 在最前面添加  返回数组的长度
+  // arr.shift  删除最前面一项  返回删除的项
+
+  // arr.join  将数组拼接成字符串
+  // arr.slice 截取数组的一部分, 不会修改原数组 arr.slice(start, end)
+  //           如果不传参, arr.slice() 可以复制一个数组
+
+  // arr.splice 可以任意位置删除,添加任意项
+    // 特点: 会改变原数组
+    // start: 开始
+    // num: 删除几个
+    // arg1, arg2... 添加的项
+  // arr.splice( start, num, arg1, arg2, arg3 )
+
+  var arr = [ "张飞", "赵云", "关羽", "马超", "马云" ];
+
+  // 1. 删除数组对应索引的项
+  // arr.splice( 2, 2 )
+
+  // 2. 在数组对应索引添加项
+  // arr.splice( 2, 0, "大乔", "貂蝉" );
+
+  // 3. 替换
+  arr.splice( 2, 1, "刘备")
+
+  console.log( arr );
+
+
+</script>
+
+</body>
+</html>

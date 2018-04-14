@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  // 1. 设置
+  // localStorage.setItem( key, value )
+
+  // 2. 获取
+  // localStorage.getItem( key );
+
+  // 3. 删除
+  // localStorage.removeItem( key )
+
+  // 4. 清空所有
+  // localStorage.clear();
+
+  // localStorage 里面只能存储 字符串
+  // 存储复杂数据类型, 一定要将复杂数据类型先 JSON.stringify 转换成 JSON 字符串
+  // 再存储
+
+  // 取的时候, 先取得 JSON字符串, 再通过 JSON.parse 转换成复杂数据类型
+  var obj = {
+    name: "pp",
+    age: 18
+  }
+  JSON.stringify( obj );
+
+
+
+</script>
+
+</body>
+</html>

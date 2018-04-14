@@ -95,3 +95,46 @@ img {
   overflow: hidden;
   background-color: #fff;
 }
+
+.lt_search {
+  padding: 10px;
+  position: relative;
+}
+.lt_search input {
+  height: 34px;
+  color: #666;
+  font-size: 12px;
+  border: 1px solid #007AFF;
+  bottom: 0;
+  border-radius: 5px;
+  padding-right: 54px;
+}
+
+.lt_search button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 34px;
+  border-radius: 0 5px 5px 0;
+}
+
+.lt_product {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
+}
+.lt_product a {
+  float: left;
+  display: block;
+  width: 48%;
+  padding:10px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+.lt_product a:nth-child(odd) {
+  margin-right: 4%;
+}
+.lt_product span {
+  color: #ff3636;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<script src="require.js"></script>
+<script>
+
+  /*
+  * 为什么要有模块化: 模块化的目的在对 项目功能的解耦
+  * 我们可以将页面中的一个个功能封装成一个个模块, 将来需要使用这些功能时导入即可
+  * */
+
+  /*
+  * 模块的标准
+  * 1. commonJS 规范 是 node 中的模块化规范
+  * 2. AMD: 异步模块定义, 所有的模块以一种异步的方式进行加载
+  *    代表: requirejs  (依赖前置, 在加载模块之前, 会将所有的依赖项都进行加载)
+  * 3. CMD: 通用模块定义,
+  *    代表: seajs  (依赖延迟: 在需要的时候再去加载依赖项)
+  * 4. ES6 里面的模块化
+  * */
+
+
+  /*
+  * 定义模块:
+  * 每个模块拥有自己的作用域
+  * 语法: define('模块名', ['依赖项', '依赖项'], function() {});
+  * */
+
+  /*
+  * 使用模块
+  * 语法: require(['模块名(没有.js后缀)'], function() {})
+  * */
+//  require(['./modules/a'], function() {
+//    console.log( "加载完 a 模块执行的回调函数" );
+//  })
+
+
+
+  /*
+  * 导出对象, 直接在模块中 return 即可
+  * 获取导出对象, 在 require 时以形参的方式接收
+  * 注意: 模块获取导出项, 必须一一对应, 如果模块没有配置导出项, 默认返回 undefined
+  *       我们一般将没有导出项的模块放最后
+  * */
+
+//  require(['./modules/b', './modules/c', './modules/a' ], function(  niuB, obj ) {
+//    console.log( niuB );
+//    console.log( obj );
+//    niuB();
+//  });
+
+
+  // 有依赖项的模块的引用方式
+  require(['./modules/need'], function() {
+    console.log( "呵呵" );
+  })
+
+
+</script>
+
+
+</body>
+</html>

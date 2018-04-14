@@ -3,7 +3,7 @@
  */
 
 
-$(function() {
+require( ['jquery', 'template', 'bootstrap', 'bootstrapValidator', 'bootstrapPaginator', 'common', 'jqueryFileupload'], function($, template) {
 
   var currentPage = 1; // 当前页
   var pageSize = 2; // 一页多少条
